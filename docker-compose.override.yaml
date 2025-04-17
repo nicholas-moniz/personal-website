@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  frontend:
+    build:
+      dockerfile: ${FRONTEND_DEV_DOCKERFILE}
+    image: ${FRONTEND_DEV_IMAGE}
+    ports:
+      - "${FRONTEND_PORT}:${FRONTEND_PORT}"
+    volumes:
+      - ${FRONTEND_DIRECTORY}:${FRONTEND_WORKING_DIRECTORY}
+      - ${FRONTEND_WORKING_DIRECTORY}/node_modules
+
+  backend:
+    build:
+      dockerfile: ${BACKEND_DEV_DOCKERFILE}
+    image: ${BACKEND_DEV_IMAGE}
+    environment:
+      - MODE=${MODE}
+      - MIGRATION_NAME=${MIGRATION_NAME}
+    ports:
+      - "${BACKEND_PORT}:${BACKEND_PORT}"
+    volumes:
+      - ${BACKEND_DIRECTORY}:${BACKEND_WORKING_DIRECTORY}
+      - ${BACKEND_WORKING_DIRECTORY}/node_modules

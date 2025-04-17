@@ -1,0 +1,75 @@
+{
+    "projectName": "personal-website",
+    "health": {
+        "endpoint": "http://localhost:8080/api/health",
+        "interval": 5,
+        "timeout": 60
+    },
+    "cert": {
+        "path": "./certs/cert.pem",
+        "keyPath": "./certs/key.pem"
+    },
+    "openssl": {
+        "subject": {
+            "country": "CA",
+            "state": "ON",
+            "location": "Sarnia",
+            "organization": "NicoM-7",
+            "organizationUnit": "personal-website",
+            "commonName": "nicholas-moniz.com"
+        },
+        "days": 365,
+        "keyAlgorithm": "RSA",
+        "keySize": 2048
+    },
+    "nginx": {
+        "image": "nginx:1.27.4-alpine",
+        "containerName": "nginx",
+        "templatePath": "./nginx.template.conf",
+        "configurationPath": "./nginx.conf",
+        "host": "nicholas-moniz.com",
+        "frontendEndpoint": "/",
+        "backendEndpoint": "/api",
+        "ports": {
+            "http": 80,
+            "https": 443
+        }
+    },
+    "postgres": {
+        "image": "postgres:17-alpine",
+        "containerName": "postgres",
+        "username": "root",
+        "database": "personal-website"
+    },
+    "frontend": {
+        "directory": "./frontend",
+        "workingDirectory": "/app",
+        "envFile": "./frontend/.env",
+        "containerName": "frontend",
+        "port": 3000,
+        "development": {
+            "image": "frontend-development:latest",
+            "dockerfile": "dockerfile.development"
+        },
+        "production": {
+            "image": "frontend:latest",
+            "dockerfile": "dockerfile.production"
+        }
+    },
+    "backend": {
+        "directory": "./backend",
+        "workingDirectory": "/app",
+        "envFile": "./backend/.env",
+        "containerName": "backend",
+        "port": 8080,
+        "migrationsPath": "./backend/prisma/migrations",
+        "development": {
+            "image": "backend-development:latest",
+            "dockerfile": "dockerfile.development"
+        },
+        "production": {
+            "image": "backend:latest",
+            "dockerfile": "dockerfile.production"
+        }
+    }
+}

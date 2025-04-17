@@ -1,0 +1,14 @@
+FROM node:23-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+ADD wait-for-db.sh ./
+
+RUN npm install
+RUN chmod +x wait-for-db.sh
+
+EXPOSE 8080
+
+CMD ["npm", "run", "dev"]
+ENTRYPOINT ["/app/wait-for-db.sh"]

@@ -168,3 +168,9 @@ dist
 
 # typescript
 next-env.d.ts
+
+# certs
+/certs
+
+# Generated Files
+nginx.conf

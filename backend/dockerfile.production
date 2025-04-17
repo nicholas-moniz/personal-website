@@ -1,0 +1,28 @@
+FROM node:23-alpine AS builder
+
+WORKDIR /app
+
+COPY . .
+
+RUN npm install
+RUN npm run build
+
+FROM node:23-alpine AS runner
+
+WORKDIR /app
+
+COPY package*.json ./
+COPY ./prisma ./prisma
+ADD wait-for-db.sh ./
+
+RUN npm install --omit=dev
+RUN chmod +x wait-for-db.sh
+
+COPY --from=builder /app/dist ./dist
+
+ENV MODE=production
+
+EXPOSE 8080
+
+CMD ["node", "dist/index.js"]
+ENTRYPOINT ["/app/wait-for-db.sh"]

@@ -1,0 +1,16 @@
+# Ignore node modules - will be reinstalled in image
+node_modules
+
+# Ignore build output
+.dist
+
+# Ignore config and dist variants
+.env
+.env.*.dist
+
+# Ignore dockerfiles and dockerignore
+dockerfile.*
+.dockerignore
+
+# README.md files
+*.md
