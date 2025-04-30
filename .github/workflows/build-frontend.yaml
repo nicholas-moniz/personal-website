@@ -9,7 +9,5 @@ on:
   workflow_dispatch:
 
 jobs:
-  use-shared-workflow:
+  build:
     uses: nicholas-moniz/shared-pipeline/.github/workflows/build-nodejs.yaml@master
-    with:
-      library-path: ./shared-pipeline/.github/actions
