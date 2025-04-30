@@ -10,4 +10,4 @@ on:
   workflow_dispatch:
 jobs:
   build:
-    uses: nichoals-moniz/shared-pipeline/.github/workflows/build-nodejs.yaml@master
+    uses: nicholas-moniz/shared-pipeline/.github/workflows/build-nodejs.yaml@master
