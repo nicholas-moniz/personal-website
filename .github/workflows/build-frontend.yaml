@@ -1,0 +1,13 @@
+name: Build Frontend
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, edited, synchronize]
+    branches:
+      - master
+  workflow_dispatch:
+jobs:
+  build:
+    uses: nichoals-moniz/shared-pipeline/.github/workflows/build-nodejs.yaml@master

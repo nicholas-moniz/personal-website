@@ -86,7 +86,6 @@ declare -A CONFIG_KEYS=(
 
   [POSTGRES_IMAGE]='.postgres.image'
   [POSTGRES_CONTAINER_NAME]='.postgres.containerName'
-  [POSTGRES_USER]='.postgres.username'
   [POSTGRES_DB]='.postgres.database'
 )
 
