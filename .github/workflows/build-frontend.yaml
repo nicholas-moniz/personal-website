@@ -1,13 +1,15 @@
-name: Build Frontend
+name: Reuse Build Node.js App
+
 on:
   push:
-    branches:
-      - master
+    branches: [master]
   pull_request:
     types: [opened, edited, synchronize]
-    branches:
-      - master
+    branches: [master]
   workflow_dispatch:
+
 jobs:
-  build:
-    uses: nichoals-moniz/shared-pipeline/.github/workflows/build-nodejs.yaml@master
+  use-shared-workflow:
+    uses: nicholas-moniz/shared-pipeline/.github/workflows/build-nodejs.yaml@master
+    with:
+      library-path: ./shared-pipeline/.github/actions
