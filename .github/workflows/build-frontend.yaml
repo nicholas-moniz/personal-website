@@ -1,4 +1,4 @@
-name: Reuse Build Node.js App
+name: Reuse Build Frontend
 
 on:
   push:
