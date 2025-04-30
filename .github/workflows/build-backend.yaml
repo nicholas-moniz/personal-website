@@ -1,4 +1,4 @@
-name: Reuse Build Backend
+name: Build Frontend
 
 on:
   push:
@@ -10,6 +10,4 @@ on:
 
 jobs:
   build:
-    uses: nicholas-moniz/shared-pipeline/.github/workflows/build-nodejs.yaml@v1
-    with:
-      library-path: ./shared-pipeline/.github/actions
+    uses: nicholas-moniz/shared-pipeline/.github/workflows/build-nodejs.yaml@master
