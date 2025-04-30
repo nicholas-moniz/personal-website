@@ -13,9 +13,36 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Role {
+  USER
+  ADMIN
+}
+
 model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  name      String?
-  createdAt DateTime @default(now())
+  id             Int              @id @default(autoincrement())
+  email          String           @unique
+  username       String           @unique
+  password       String?          // Nullable — third-party logins won’t have this
+  firstName      String
+  lastName       String
+  role           Role             @default(USER)
+  avatarUrl      String?
+  emailVerified  Boolean          @default(false)
+  lastLogin      DateTime?
+  deletedAt      DateTime?
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  providers      AuthProvider[]   // 1-N relationship to link external accounts
+}
+
+model AuthProvider {
+  id           Int       @id @default(autoincrement())
+  provider     String    // e.g., "google", "github", "firebase"
+  providerId   String    // e.g., Firebase UID, Google sub
+  user         User      @relation(fields: [userId], references: [id])
+  userId       Int
+  createdAt    DateTime  @default(now())
+  updatedAt      DateTime         @updatedAt
+
+  @@unique([provider, providerId]) // Prevent duplicates for same identity
 }

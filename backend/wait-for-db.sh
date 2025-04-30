@@ -29,6 +29,9 @@ while [ "$elapsed_time" -lt "$MAX_WAIT_TIME" ]; do
         ;;
     esac
 
+    echo "Generating Prisma client..."
+    npx prisma generate
+    
     echo "Prisma ready. Starting app ..."
     exec "$@"
   else
