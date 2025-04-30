@@ -1,4 +1,4 @@
-name: Reuse Build Frontend
+name: Build Frontend
 
 on:
   push:
