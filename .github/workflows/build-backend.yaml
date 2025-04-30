@@ -1,5 +1,4 @@
 name: Build Backend
-
 on:
   push:
     branches: [master]
@@ -7,7 +6,6 @@ on:
     types: [opened, edited, synchronize]
     branches: [master]
   workflow_dispatch:
-
 jobs:
   build:
     uses: nicholas-moniz/shared-pipeline/.github/workflows/build-nodejs.yaml@master
