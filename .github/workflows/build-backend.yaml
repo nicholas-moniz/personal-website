@@ -10,6 +10,6 @@ on:
 
 jobs:
   use-shared-workflow:
-    uses: nicholas-moniz/shared-pipeline/.github/workflows/build-nodejs.yaml@master
+    uses: nicholas-moniz/shared-pipeline/.github/workflows/build-nodejs.yaml@refs/heads/master
     with:
       library-path: ./shared-pipeline/.github/actions
