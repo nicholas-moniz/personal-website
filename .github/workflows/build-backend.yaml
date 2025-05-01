@@ -9,3 +9,4 @@ on:
 jobs:
   build:
     uses: nicholas-moniz/shared-pipeline/.github/workflows/build-nodejs.yaml@master
+    secrets: inherit
