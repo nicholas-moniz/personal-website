@@ -1,0 +1,18 @@
+{
+  "project": {
+    "name": "personal-website-frontend",
+    "version": "1.0.0",
+    
+    "test": {
+      "directory": "frontend",
+    },
+
+    "docker": {
+      "dockerfile": "frontend/dockerfile.production",
+    },
+
+    "helm": {
+      "chartPath": "frontend/helm",
+    }
+  }
+}
