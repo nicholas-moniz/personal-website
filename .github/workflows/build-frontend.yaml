@@ -11,3 +11,5 @@ jobs:
   build:
     uses: nicholas-moniz/shared-pipeline/.github/workflows/build-nodejs.yaml@master
     secrets: inherit
+    with:
+      build-properties-path: frontend/build-properties.json
